@@ -1,10 +1,11 @@
 const express = require("express")
 const bodyParser = require("body-parser");
-var port = 3030
 var app = express()
 const path = require("path");
 const router = express.Router();
 const spawn = require('child_process').spawn; 
+const axios = require('axios');
+const { stderr } = require("process");
 
 // serve static files, including the css styling
 app.use(express.static(__dirname));
@@ -41,28 +42,22 @@ pyp.stdout.on("data", (data) => {
 });
 */
 
-router.post("/tech", (req, res) => {
+router.post("/public/tech", (req, res) => {
+    let local = "http://localhost:8080/animate"
+    let vmInstance = 'http://35.188.47.235:8080/animate'
     //const py = spawn('/opt/anaconda3/bin/python', [__dirname + '/python/animateText.py', req.body.value]);
-    
-    py.stdout.on("data", (data) => {
-          console.log(`animateText.py: ${data}`)
-    });
-
-    py.stderr.on('data', data => {
-        console.error(`stderr: ${data}`);
-    });
-
-    py.on('error', (error) => {
-        console.error(`error: ${error.message}`);
-    });
-      
-    py.on("close", () => {   
-        res.send("Thanks for submitting your poem!:\n\n" + req.body.value)
-    });
+    console.log(req.body)
+    axios.post(vmInstance, {
+        input: JSON.stringify(req.body),
+    }).catch(err => {
+        console.log(err)
+    })
+    res.send("Thanks for submitting your poem!: We'll email you at " + req.body.email + " when your audiovisual experience is ready.")
 })
 
 app.use("/", router);
-app.listen(port, () => {
-    console.log("app running on port: " + port)
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log("app running on port: " + PORT)
 })
 

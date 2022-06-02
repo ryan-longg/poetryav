@@ -16,10 +16,12 @@
       href="https://fonts.googleapis.com/css?family=Press Start 2P|Libre Barcode 128 Text"
     />
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <script src="../particles.js"></script>
     <script src="../tech.js" type="text/javascript"></script>
     <title>machine dreams</title>
   </head>
   <body>
+    <div id="particles-js" class="behind"></div>
     <div class="flex-header" id="myHeader">
       <div class="flex-third">
         <h2 class="nameText">
@@ -37,36 +39,37 @@
       </div>
     </div>
 
-    <div>
-      <div class="scroll">
-        <div class="poemInput">
-          <form
-            id="poemTextSubmit"
-            action="../tech"
-            method="post"
-            onsubmit="cancelEmptyRequest(event)"
-          >
-            <textarea
-              form="poemTextSubmit"
-              id="poemTextArea"
-              name="value"
-              class="declassifiedText"
-              rows="45"
-              cols="35"
-              placeholder="Enter poem here"
-            ></textarea>
-            <div class="keyboard">
-              <input
-                class="poemSubmit"
-                type="submit"
-                value="dream machine, dream"
-                onclick="onPoemSubmit()"
-              />
-            </div>
-          </form>
+   
+    <div class="poemInput">
+      <form
+        id="poemTextSubmit"
+        action="./tech"
+        method="post"
+        onsubmit="cancelEmptyRequest(event)"
+      >
+        <textarea
+          form="poemTextSubmit"
+          id="poemTextArea"
+          name="value"
+          class="declassifiedText"
+          rows="45"
+          cols="35"
+          placeholder="Enter poem here"
+        ></textarea>
+        
+        <input name="email" id="emailInputArea" type=”text” name=”Email” class="emailInput" placeholder="your email">
+
+        <div class="keyboard">
+          <input
+            class="poemSubmit"
+            type="submit"
+            value="dream machine, dream"
+            onclick="onPoemSubmit()"
+          />
         </div>
-      </div>
+      </form>
     </div>
+
 
     <div class="flex-footer behind" id="myFooter">
       <img class="spin" src="/images/chaos.png" width="200" height="200" />
