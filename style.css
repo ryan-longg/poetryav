@@ -167,6 +167,7 @@
     width: 400px;
     height: 600px;
     border: 2px solid black;
+    overflow: auto; /* Enable scroll if needed */
     padding-left: 10px;
     padding-right: 10px;
     margin-left: 3px;
@@ -188,8 +189,8 @@
   .card:hover {
     border: 2px solid black;
     background-color: #000000;
-    color:#34ff42
-    
+    color:#34ff42;
+    z-index: 5
   }
 
 

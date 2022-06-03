@@ -43,23 +43,16 @@ window.onload = () => {
         modal5.style.display = "block";
     }
 
-    var modal6 = document.getElementById("myModal6");
-    var btn6 = document.getElementById("btn6");
-    btn6.onclick = function() {
-        modal6.style.display = "block";
-    }
-
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal0 || event.target == modal1 || event.target == modal2 || event.target == modal3
-            || event.target == modal4 || event.target == modal5 || event.target == modal6) {
+            || event.target == modal4 || event.target == modal5) {
             modal0.style.display = "none";
             modal1.style.display = "none";
             modal2.style.display = "none";
             modal3.style.display = "none";
             modal4.style.display = "none";
             modal5.style.display = "none";
-            modal6.style.display = "none";
         }
     }
 
